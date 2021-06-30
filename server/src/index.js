@@ -1,6 +1,15 @@
 import "dotenv/config";
 import db from "./db";
+import express from "express";
 
-const { MONGO_CONNECTION_URI } = process.env;
+const { EXPRESS_PORT, MONGO_CONNECTION_URI } = process.env;
 
-db.connect(MONGO_CONNECTION_URI);
+const app = express();
+
+app.use(express.json());
+
+db.connect(MONGO_CONNECTION_URI, () => {
+  app.listen(EXPRESS_PORT, () => {
+    console.log(`express running on port ${EXPRESS_PORT}`);
+  });
+});
