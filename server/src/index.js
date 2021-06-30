@@ -1,19 +1,18 @@
 import "dotenv/config";
 import express from "express";
 import db from "./db";
+import routes from "./routes";
 import errorHandler from "./helpers/errorHandler";
-import { SuccessResponse } from "./helpers/response";
+import { NotFoundError } from "./helpers/error";
 
 const { EXPRESS_PORT, MONGO_CONNECTION_URI } = process.env;
 
 const app = express();
 
 app.use(express.json());
+app.use(routes);
 
-app.get("/", (_, res) => {
-  new SuccessResponse(200, {}).send(res);
-});
-
+app.use((_, __, next) => next(new NotFoundError()));
 app.use(errorHandler);
 
 db.connect(MONGO_CONNECTION_URI, () => {

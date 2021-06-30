@@ -33,3 +33,15 @@ export class BadRequestResponse extends Response {
     super(400, message);
   }
 }
+
+export class NotFoundResponse extends Response {
+  constructor(message) {
+    super(404, message);
+  }
+}
+
+export class MethodNotAllowedResponse extends Response {
+  constructor(message) {
+    super(405, message);
+  }
+}
