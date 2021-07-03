@@ -16,4 +16,15 @@ router
     throw new MethodNotAllowedError();
   });
 
+router
+  .route("/api/:code")
+  .get((req, res, next) =>
+    Services.redirect(req)
+      .then(data => new SuccessResponse(200, data).send(res))
+      .catch(e => next(e))
+  )
+  .all(() => {
+    throw new MethodNotAllowedError();
+  });
+
 export default router;

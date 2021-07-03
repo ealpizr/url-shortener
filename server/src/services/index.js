@@ -30,8 +30,25 @@ export default class Services {
         )
         .catch(e => {
           console.log(e);
-          reject(new InternalError());
+          return reject(new InternalError());
         });
+    });
+  }
+
+  static redirect(req) {
+    return new Promise((resolve, reject) => {
+      const { code } = req.params;
+      shortenedUrl.findOne({ code }, (err, doc) => {
+        if (err) {
+          return reject(new InternalError());
+        }
+        if (!doc) {
+          return reject(new BadRequestError("Bad Request, invalid code"));
+        }
+        return resolve({
+          url: doc.url,
+        });
+      });
     });
   }
 }
