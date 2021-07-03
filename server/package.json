@@ -9,8 +9,10 @@
   "author": "Enrique Alpízar",
   "license": "MIT",
   "dependencies": {
+    "crypto-random-string": "^3.3.1",
     "express": "^4.17.1",
-    "mongoose": "^5.13.0"
+    "mongoose": "^5.13.0",
+    "validator": "^13.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",
