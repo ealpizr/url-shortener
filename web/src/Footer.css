@@ -31,3 +31,11 @@
   font-size: calc(1.4rem + 1vw);
 }
 
+@media screen and (max-height: 400px) {
+  .bg {
+    display: none;
+  }
+  .nav ul li a {
+    display: none;
+  }
+}
