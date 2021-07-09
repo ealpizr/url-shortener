@@ -10,8 +10,8 @@ const Header = () => {
        <img className="header-bg" src="/mobile-header-bg.svg" alt="" />
      </picture>
      <div className="header-container">
-     <h1 className="header-url">URL</h1>
-     <h1 className="header-shortener">Shortener</h1>
+      <h1 className="header-url">URL</h1>
+      <h1 className="header-shortener">Shortener</h1>
      </div>
      <nav className="header-nav">
        <ul>

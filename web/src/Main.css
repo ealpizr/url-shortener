@@ -23,3 +23,40 @@
   border-radius: 3px;
   padding: 1.2rem;
 }
+
+@media screen and (min-width:768px) {
+  .form-input {
+    width: 70vw;
+    font-size: 2.4rem;
+    margin-bottom: 4rem;
+  }
+
+  .form-button {
+    font-size: 2.6rem;
+    padding: 1.6rem;
+  }
+}
+
+@media screen and (min-width:1280px) {
+  .main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 60vw;
+  }
+
+  .form {
+    width: 100%;
+  }
+
+  .form-input {
+    width: 70%;
+    font-size: 2.4rem;
+    padding: 1.5rem;
+    margin-bottom: 6rem;
+  }
+}
