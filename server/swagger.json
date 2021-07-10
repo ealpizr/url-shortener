@@ -1,0 +1,108 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "URL Shortner"
+  },
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "url"
+    }
+  ],
+  "paths": {
+    "/shorten": {
+      "post": {
+        "tags": [
+          "url"
+        ],
+        "summary": "Shorten a URL",
+        "operationId": "shorten",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "url": {
+                  "type":"string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "A URL object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type":"integer"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "originalUrl": {
+                      "type": "string"
+                    },
+                    "shortenedUrl": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{code}": {
+      "get": {
+        "tags": [
+          "url"
+        ],
+        "summary": "Shorten a URL",
+        "operationId": "redirect",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "code",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A URL object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "integer"
+                },
+                "url": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "URL": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
