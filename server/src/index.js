@@ -1,6 +1,7 @@
 import "dotenv/config";
 import express from "express";
 import db from "./db";
+import cors from 'cors'
 import routes from "./routes";
 import swagger from 'swagger-ui-express';
 import swaggerDoc from '../swagger.json'
@@ -12,6 +13,7 @@ const { EXPRESS_PORT, MONGO_CONNECTION_URI } = process.env;
 const app = express();
 
 app.use(express.json());
+app.use(cors({ origin: "*"}))
 app.use('/api-docs', swagger.serve, swagger.setup(swaggerDoc))
 app.use(routes);
 
