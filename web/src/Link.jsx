@@ -1,7 +1,7 @@
 import React from 'react'
 import './Link.css'
 
-const Link = url => {
+const Link = ({ url }) => {
   return (
     <div className="link-container">
       <p className="link-p"><a href={url}>{url}</a></p>

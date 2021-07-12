@@ -21,7 +21,7 @@ const Main = () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ url: link })
-    }).then(res => res.json()).then(data => {
+    }).then(res => res.json()).then(({ data }) => {
       setUrl(data.shortenedUrl)
     }).catch(e => setErr(e.message))
   }
