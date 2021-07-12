@@ -10,7 +10,7 @@ export default class Services {
     return new Promise((resolve, reject) => {
       const { url } = req.body;
 
-      if (!isURL(url)) {
+      if (!isURL(url, { require_protocol: true })) {
         return reject(new BadRequestError("Bad Request, invalid url"));
       }
 

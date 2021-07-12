@@ -17,10 +17,10 @@ router
   });
 
 router
-  .route("/api/:code")
+  .route("/:code")
   .get((req, res, next) =>
     Services.redirect(req)
-      .then(data => new SuccessResponse(200, data).send(res))
+      .then(data => res.status(301).redirect(data.url))
       .catch(e => next(e))
   )
   .all(() => {
