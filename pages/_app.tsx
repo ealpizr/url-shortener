@@ -1,6 +1,6 @@
+import "@styles/reset.scss";
 import type { AppProps } from "next/app";
 import Head from "next/head";
-import "styles/reset.css";
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
