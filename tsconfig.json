@@ -4,7 +4,10 @@
     "paths": {
       "@styles/*": ["styles/*"],
       "@api/*": ["pages/api/*"],
-      "@components/*": ["pages/components/*"]
+      "@components/*": ["components/*"],
+      "@apptypes/*": ["types/*"],
+      "@schemas/*": ["schemas/*"],
+      "@lib/*": ["lib/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
