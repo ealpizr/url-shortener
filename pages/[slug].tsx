@@ -21,6 +21,13 @@ const SlugPage = ({ statusCode }: Props) => {
 const getServerSideProps: GetServerSideProps<Props, Params> = async (
   context
 ) => {
+  console.log("params");
+  console.log(context.params);
+  console.log("");
+  console.log("query");
+  console.log(context.query);
+  console.log("");
+
   try {
     const slug = context.params!.slug;
     const record = await prisma.uRL.findFirstOrThrow({
@@ -33,6 +40,8 @@ const getServerSideProps: GetServerSideProps<Props, Params> = async (
       },
     };
   } catch (e) {
+    console.log("eror caught");
+    console.log(e);
     let statusCode: StatusCode = 404;
     if (e instanceof NotFoundError === false) {
       statusCode = 500;
