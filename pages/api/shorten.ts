@@ -8,7 +8,7 @@ const handler = (
   req: NextApiRequest,
   res: NextApiResponse<IShortenResponse>
 ) => {
-  const body = validationSchema.safeParse(req.body);
+  const body = validationSchema.safeParse(JSON.parse(req.body));
   if (!body.success) {
     return res.status(400).json({
       error: "bad request",

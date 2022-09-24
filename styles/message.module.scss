@@ -1,0 +1,34 @@
+.error {
+  background-color: #ef233c;
+}
+
+.success {
+  background-color: #06d6a0;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 90%;
+  max-width: 600px;
+  border-radius: 8px;
+  padding: 1rem 2rem;
+}
+
+.icon {
+  font-size: 4rem;
+  color: white;
+  margin-right: 1.2rem;
+}
+
+.message {
+  flex: 1;
+  color: white;
+  font-weight: 700;
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}
