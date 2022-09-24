@@ -4,7 +4,7 @@ import validationSchema from "@schemas/shortenRequestSchema";
 import cryptoRandomString from "crypto-random-string";
 import type { NextApiRequest, NextApiResponse } from "next";
 
-const handler = (
+const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<IShortenResponse>
 ) => {
@@ -17,7 +17,7 @@ const handler = (
   }
 
   const slug = cryptoRandomString({ length: 6, type: "distinguishable" });
-  prisma.uRL
+  await prisma.uRL
     .create({
       data: {
         url: body.data.url,
