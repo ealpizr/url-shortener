@@ -33,6 +33,7 @@ const Home = () => {
       const body = await response.json();
       setSuccess(`${process.env.NEXT_PUBLIC_URL}/${body.slug}`);
     } catch (e) {
+      setBusy(false);
       if (e instanceof InvalidRequestError) {
         return setError(e.message);
       }
