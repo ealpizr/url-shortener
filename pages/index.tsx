@@ -2,7 +2,7 @@ import InvalidRequestError from "@apptypes/InvalidRequestError";
 import MessageModal from "@components/MessageModal";
 import validationSchema from "@schemas/shortenRequestSchema";
 import styles from "@styles/index.module.scss";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, KeyboardEvent, useState } from "react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { AiFillGithub } from "react-icons/ai";
 import { FaCut } from "react-icons/fa";
@@ -20,6 +20,12 @@ const Home = () => {
     if (success) setSuccess("");
 
     setUrl(e.target.value);
+  };
+
+  const handleKeyDown = async (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      await shortenUrl();
+    }
   };
 
   const shortenUrl = async () => {
@@ -70,6 +76,7 @@ const Home = () => {
             placeholder="Paste your long url here"
             value={url}
             onChange={handleUrlChange}
+            onKeyDown={handleKeyDown}
             disabled={isBusy}
           />
           <button
