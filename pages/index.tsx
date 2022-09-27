@@ -48,7 +48,7 @@ const Home = () => {
       <nav className={styles.header}>
         <h2 className={styles.title}>URL Shortener</h2>
         <a
-          href="https://github.com/ealpizr/url-shortener-2"
+          href="https://github.com/ealpizr/url-shortener"
           className={styles["github-link"]}
         >
           <AiFillGithub />
