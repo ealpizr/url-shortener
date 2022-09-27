@@ -3,14 +3,17 @@ import MessageModal from "@components/MessageModal";
 import validationSchema from "@schemas/shortenRequestSchema";
 import styles from "@styles/index.module.scss";
 import { ChangeEvent, useState } from "react";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import { AiFillGithub } from "react-icons/ai";
 import { FaCut } from "react-icons/fa";
+import { FiCopy } from "react-icons/fi";
 
 const Home = () => {
   const [url, setUrl] = useState("");
   const [isBusy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [copied, setCopied] = useState(false);
 
   const handleUrlChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (error) setError("");
@@ -80,7 +83,54 @@ const Home = () => {
         </div>
         {success && (
           <MessageModal type="success">
-            <a href={success}>{success}</a>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
+              }}
+            >
+              <a href={success}>{success}</a>
+              <CopyToClipboard text={success}>
+                <button
+                  onClick={() => {
+                    setCopied(true);
+                    window.setTimeout(() => {
+                      setCopied(false);
+                    }, 3000);
+                  }}
+                  style={{
+                    position: "relative",
+                    cursor: "pointer",
+                    border: "none",
+                    backgroundColor: "transparent",
+                    color: "white",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "2.4rem",
+                  }}
+                >
+                  {copied && (
+                    <span
+                      style={{
+                        visibility: `${copied ? "visible" : "hidden"}`,
+                        position: "absolute",
+                        bottom: "125%",
+                        backgroundColor: "#555",
+                        fontSize: "1.4rem",
+                        padding: "0.2rem 1rem",
+                        borderRadius: "6px",
+                      }}
+                    >
+                      Copied!
+                    </span>
+                  )}
+                  <FiCopy />
+                </button>
+              </CopyToClipboard>
+            </div>
           </MessageModal>
         )}
       </section>
