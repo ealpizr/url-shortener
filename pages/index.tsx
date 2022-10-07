@@ -57,8 +57,7 @@ const Home = () => {
 
   return (
     <div className={styles.container}>
-      <nav className={styles.header}>
-        <h2 className={styles.title}>URL Shortener</h2>
+      <nav>
         <a
           href="https://github.com/ealpizr/url-shortener"
           className={styles["github-link"]}
@@ -66,84 +65,81 @@ const Home = () => {
           <AiFillGithub />
         </a>
       </nav>
-      <section className={styles.main}>
-        {error && (
-          <MessageModal type="error">
-            <p>{error}</p>
-          </MessageModal>
-        )}
-        <div className={styles["main-container"]}>
-          <input
-            className={styles.input}
-            type="text"
-            placeholder="Paste your long url here"
-            value={url}
-            onChange={handleUrlChange}
-            onKeyDown={handleKeyDown}
-            disabled={isBusy}
-          />
-          <button
-            className={styles.button}
-            onClick={shortenUrl}
-            disabled={isBusy}
+      <h2>Let&apos;s shorten it!</h2>
+      <p>
+        Free URL Shortener - create short and easy to remember links in seconds!
+      </p>
+      <div className={styles["input-container"]}>
+        <input
+          placeholder="Paste long URL here"
+          onChange={handleUrlChange}
+          onKeyDown={handleKeyDown}
+          disabled={isBusy}
+        />
+
+        <button onClick={shortenUrl} disabled={isBusy}>
+          <FaCut />
+          <span>Shorten it</span>
+        </button>
+      </div>
+
+      {error && (
+        <MessageModal type="error">
+          <p>{error}</p>
+        </MessageModal>
+      )}
+      {success && (
+        <MessageModal type="success">
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+            }}
           >
-            <FaCut />
-            Shorten it
-          </button>
-        </div>
-        {success && (
-          <MessageModal type="success">
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-              }}
-            >
-              <a href={success}>{success}</a>
-              <CopyToClipboard text={success}>
-                <button
-                  onClick={() => {
-                    setCopied(true);
-                    window.setTimeout(() => {
-                      setCopied(false);
-                    }, 3000);
-                  }}
-                  style={{
-                    position: "relative",
-                    cursor: "pointer",
-                    border: "none",
-                    backgroundColor: "transparent",
-                    color: "white",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: "2.4rem",
-                  }}
-                >
-                  {copied && (
-                    <span
-                      style={{
-                        visibility: `${copied ? "visible" : "hidden"}`,
-                        position: "absolute",
-                        bottom: "125%",
-                        backgroundColor: "#555",
-                        fontSize: "1.4rem",
-                        padding: "0.2rem 1rem",
-                        borderRadius: "6px",
-                      }}
-                    >
-                      Copied!
-                    </span>
-                  )}
-                  <FiCopy />
-                </button>
-              </CopyToClipboard>
-            </div>
-          </MessageModal>
-        )}
-      </section>
+            <a href={success}>{success}</a>
+            <CopyToClipboard text={success}>
+              <button
+                onClick={() => {
+                  setCopied(true);
+                  window.setTimeout(() => {
+                    setCopied(false);
+                  }, 3000);
+                }}
+                style={{
+                  position: "relative",
+                  cursor: "pointer",
+                  border: "none",
+                  backgroundColor: "transparent",
+                  color: "white",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontSize: "2.4rem",
+                }}
+              >
+                {copied && (
+                  <span
+                    style={{
+                      visibility: `${copied ? "visible" : "hidden"}`,
+                      position: "absolute",
+                      bottom: "125%",
+                      backgroundColor: "#555",
+                      fontSize: "1.4rem",
+                      padding: "0.2rem 1rem",
+                      borderRadius: "6px",
+                    }}
+                  >
+                    Copied!
+                  </span>
+                )}
+                <FiCopy />
+              </button>
+            </CopyToClipboard>
+          </div>
+        </MessageModal>
+      )}
     </div>
   );
 };
